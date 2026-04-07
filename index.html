@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema POS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .login-box {
+      max-width: 400px; margin: 80px auto;
+      background: white; padding: 40px;
+      border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .login-box h1 { margin-bottom: 10px; }
+    .login-box p { color: #666; margin-bottom: 25px; }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h1>🛒 Sistema POS</h1>
+    <p>Ingresa tus credenciales de administrador</p>
+    <label>Usuario</label>
+    <input type="text" id="usuario" placeholder="admin">
+    <label>Contraseña</label>
+    <input type="password" id="password" placeholder="••••••">
+    <button onclick="login()">Ingresar</button>
+    <p id="error-msg" style="color:red; margin-top:15px;"></p>
+  </div>
+
+  <script>
+    function login() {
+      const u = document.getElementById('usuario').value;
+      const p = document.getElementById('password').value;
+      // Credenciales de prueba (acceso administrativo)
+      if (u === 'admin' && p === 'admin123') {
+        localStorage.setItem('loggedIn', 'true');
+        window.location.href = 'dashboard.html';
+      } else {
+        document.getElementById('error-msg').textContent = 'Credenciales incorrectas';
+      }
+    }
+  </script>
+</body>
+</html>

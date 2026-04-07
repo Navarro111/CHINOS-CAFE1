@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - POS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav>
+    <span style="color:white; font-size:20px; font-weight:bold;">🛒 POS Admin</span>
+    <a href="ventas.html">Ventas</a>
+    <a href="inventario.html">Inventario</a>
+    <a href="proveedores.html">Proveedores</a>
+    <a href="facturacion.html">Facturación</a>
+    <a href="index.html" onclick="localStorage.clear()" style="margin-left:auto; background:#c62828;">Cerrar sesión</a>
+  </nav>
+
+  <div class="container">
+    <h1>Panel de Control</h1>
+    <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:20px;">
+      <div class="card" style="text-align:center;">
+        <h2 id="total-ventas">0</h2>
+        <p>Ventas registradas</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <h2 id="total-productos">0</h2>
+        <p>Productos en inventario</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <h2 id="total-proveedores">0</h2>
+        <p>Proveedores</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <h2 id="total-facturas">0</h2>
+        <p>Facturas emitidas</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    if (!localStorage.getItem('loggedIn')) window.location.href = 'index.html';
+
+    import { db } from './js/firebase-config.js';
+    import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    async function cargarConteos() {
+      const colecciones = ['ventas','productos','proveedores','facturas'];
+      const ids = ['total-ventas','total-productos','total-proveedores','total-facturas'];
+      for (let i = 0; i < colecciones.length; i++) {
+        const snap = await getDocs(collection(db, colecciones[i]));
+        document.getElementById(ids[i]).textContent = snap.size;
+      }
+    }
+    cargarConteos();
+  </script>
+</body>
+</html>

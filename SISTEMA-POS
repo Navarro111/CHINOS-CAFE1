@@ -1,0 +1,15 @@
+sistema-pos/
+├── index.html         ← página principal / login
+├── dashboard.html     ← menú principal del POS
+├── ventas.html        ← módulo de ventas
+├── inventario.html    ← módulo de inventario
+├── proveedores.html   ← módulo de proveedores
+├── facturacion.html   ← módulo de facturación
+├── css/
+│   └── style.css      ← estilos globales
+└── js/
+    ├── firebase-config.js   ← configuración Firebase
+    ├── ventas.js
+    ├── inventario.js
+    ├── proveedores.js
+    └── facturacion.js

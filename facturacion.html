@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Facturación - POS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .detalle-producto {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .detalle-producto input { margin: 0; }
+    .btn-add-item {
+      background: #2e7d32;
+      margin-bottom: 15px;
+    }
+    .resumen {
+      background: #e8eaf6;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .factura-preview {
+      border: 2px dashed #1a237e;
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+    }
+    .factura-preview h2 { text-align: center; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="dashboard.html">⬅ Dashboard</a>
+    <span style="color:white; font-weight:bold;">Módulo de Facturación</span>
+  </nav>
+
+  <div class="container">
+    <h1>Generar Factura</h1>
+
+    <div class="card">
+      <label>Nombre del Cliente</label>
+      <input type="text" id="cliente" placeholder="Ej: Juan Pérez">
+
+      <label>RUC / Cédula del Cliente</label>
+      <input type="text" id="ruc" placeholder="Ej: 8-123-456">
+
+      <label>Fecha de Emisión</label>
+      <input type="date" id="fecha">
+
+      <hr style="margin: 20px 0;">
+      <h3>Productos / Servicios</h3>
+
+      <div id="items-container">
+        <!-- Las filas de productos se agregan aquí -->
+      </div>
+
+      <button class="btn-add-item" onclick="agregarFila()">+ Agregar producto</button>
+
+      <div class="resumen">
+        <p>Subtotal: &nbsp;<strong id="subtotal">$0.00</strong></p>
+        <p>ITBMS (7%): &nbsp;<strong id="itbms">$0.00</strong></p>
+        <p style="font-size:18px;">
+          <strong>TOTAL: <span id="total-final">$0.00</span></strong>
+        </p>
+      </div>
+
+      <button onclick="generarFactura()" style="margin-top:15px;">
+        Generar y Guardar Factura
+      </button>
+      <p id="msg-fact" style="color:green; margin-top:10px;"></p>
+    </div>
+
+    <!-- Vista previa de factura para imprimir -->
+    <div class="card factura-preview" id="factura-preview">
+      <h2>🧾 FACTURA</h2>
+      <div id="contenido-factura"></div>
+      <button onclick="window.print()" style="margin-top:15px; background:#2e7d32;">
+        🖨️ Imprimir Factura
+      </button>
+    </div>
+
+    <!-- Historial de facturas -->
+    <div class="card">
+      <h2>Historial de Facturas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th># Factura</th>
+            <th>Cliente</th>
+            <th>RUC/Cédula</th>
+            <th>Total</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-facturas"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="module" src="js/facturacion.js"></script>
+</body>
+</html>

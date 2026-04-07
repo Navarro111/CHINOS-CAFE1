@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ventas - POS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav>
+    <a href="dashboard.html">⬅ Dashboard</a>
+    <span style="color:white; font-weight:bold;">Módulo de Ventas</span>
+  </nav>
+  <div class="container">
+    <h1>Registrar Venta</h1>
+    <div class="card">
+      <label>Producto</label>
+      <input type="text" id="producto" placeholder="Nombre del producto">
+      <label>Cantidad</label>
+      <input type="number" id="cantidad" placeholder="1">
+      <label>Precio Unitario ($)</label>
+      <input type="number" id="precio" placeholder="0.00">
+      <label>Cliente</label>
+      <input type="text" id="cliente" placeholder="Nombre del cliente">
+      <button onclick="registrarVenta()">Registrar Venta</button>
+      <p id="msg-venta" style="color:green; margin-top:10px;"></p>
+    </div>
+    <div class="card">
+      <h2>Historial de Ventas</h2>
+      <table>
+        <thead><tr><th>Producto</th><th>Cantidad</th><th>Total</th><th>Cliente</th><th>Fecha</th></tr></thead>
+        <tbody id="tabla-ventas"></tbody>
+      </table>
+    </div>
+  </div>
+  <script type="module" src="js/ventas.js"></script>
+</body>
+</html>

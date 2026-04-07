@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Proveedores - POS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav>
+    <a href="dashboard.html">⬅ Dashboard</a>
+    <span style="color:white; font-weight:bold;">Módulo de Proveedores</span>
+  </nav>
+
+  <div class="container">
+    <h1>Gestión de Proveedores</h1>
+
+    <div class="card">
+      <label>Nombre del Proveedor</label>
+      <input type="text" id="nombre" placeholder="Ej: Distribuidora ABC">
+
+      <label>Teléfono</label>
+      <input type="tel" id="telefono" placeholder="Ej: 6000-0000">
+
+      <label>Correo Electrónico</label>
+      <input type="email" id="email" placeholder="proveedor@email.com">
+
+      <label>Producto que Suministra</label>
+      <input type="text" id="producto" placeholder="Ej: Bebidas, Lácteos, Electrónicos">
+
+      <label>Dirección</label>
+      <input type="text" id="direccion" placeholder="Ej: Ciudad de Panamá">
+
+      <button onclick="agregarProveedor()">Guardar Proveedor</button>
+      <p id="msg-prov" style="color:green; margin-top:10px;"></p>
+    </div>
+
+    <div class="card">
+      <h2>Lista de Proveedores</h2>
+      <input type="text" id="buscador" placeholder="🔍 Buscar proveedor..." onkeyup="filtrarProveedores()">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>Producto</th>
+            <th>Dirección</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-proveedores"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="module" src="js/proveedores.js"></script>
+</body>
+</html>

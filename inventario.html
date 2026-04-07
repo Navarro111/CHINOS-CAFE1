@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>Inventario</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+  <nav><a href="dashboard.html">⬅ Dashboard</a><span style="color:white;font-weight:bold;">Inventario</span></nav>
+  <div class="container">
+    <h1>Gestión de Inventario</h1>
+    <div class="card">
+      <label>Nombre del Producto</label><input type="text" id="nombre" placeholder="Producto">
+      <label>Categoría</label><input type="text" id="categoria" placeholder="Categoría">
+      <label>Stock</label><input type="number" id="stock" placeholder="0">
+      <label>Precio ($)</label><input type="number" id="precio" placeholder="0.00">
+      <button onclick="agregarProducto()">Agregar Producto</button>
+      <p id="msg-inv" style="color:green;margin-top:10px;"></p>
+    </div>
+    <div class="card">
+      <h2>Productos</h2>
+      <table>
+        <thead><tr><th>Nombre</th><th>Categoría</th><th>Stock</th><th>Precio</th></tr></thead>
+        <tbody id="tabla-inv"></tbody>
+      </table>
+    </div>
+  </div>
+  <script type="module" src="js/inventario.js"></script>
+</body>
+</html>
